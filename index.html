@@ -13,6 +13,9 @@
     span{
         font-family: Workbench;
     }
+    h1{
+        font-family: Workbench;
+    }
     
      body{
         background-color: rgb(127,0,255);
@@ -45,6 +48,16 @@
   font-size: 150%;
   text-align: center;
 }
+
+.footer {
+    background-color: rgb(218,247,5);
+    color: black;
+    padding: 30px;
+    border-radius: 15px;
+    }
+    body {
+  margin: 40px;
+}
 button {
 			border: 2px solid black;
 			padding: 10px 20px;
@@ -68,22 +81,25 @@ button {
 <body>
 
     <div class="header">
-        <span  style="font-size: 35px"class="test-class-2">Do you want to summon a creature?</span><br>
+        <span  style="font-size: 35px"class="headder-1">Do you want to summon a creature?</span><br>
 
 		<script>
-			var someElements = document.querySelectorAll('.test-class-2');
+			var someElements = document.querySelectorAll('.headder-1');
 
-			function exampleOfARepeatedFunction() 
+			function RepeatedFunction() 
             {
 				var randomIndex = Math.floor(Math.random()*someElements.length);
 				var selectedElement = someElements[randomIndex];
 				selectedElement.style.letterSpacing = Math.random()*10 + "px";
 			}
-            setInterval(exampleOfARepeatedFunction, 1700)
-		</script>
+            setInterval(RepeatedFunction, 1700)
+		</script><br>
        
-       <button onclick="alert('Go choose one!')">Yes</button>
-       <button onclick="alert('Screw you, you still need to do it.')">No</button>
+		<button onclick="alert(myFirstArray[0])">Yes</button>
+		<button onclick="alert(myFirstArray[1])">No</button>
+		<script>
+			var myFirstArray = ["Go choose one", "Screw you, you still need to do it.",];
+		</script>
     </div>   
     <br> 
  <div class="wrapper">
@@ -135,8 +151,15 @@ button {
                     }
                 </script>
             </div>
-
-        </div> 
-
+        </div> <br>
+<div class="footer">
+    <h1>
+        Click the button if you can't choose which one to summon!
+    </h1>
+    <button onclick="alert(myArray[Math.floor(Math.random()*myArray.length)])">Click!</button>
+    <script>
+        var myArray = ['Ghost', 'Franken Dog', 'Black Cat','House Elf'];
+    </script>
+</div>
 </body>
 </html>
