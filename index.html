@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>summonsupport</title>
+</head>
+<style>
+     @font-face {
+        font-family: Workbench;
+        src: url(Workbench/static/Workbench-Regular.ttf);
+    }
+    span{
+        font-family: Workbench;
+    }
+    
+     body{
+        background-color: rgb(127,0,255);
+    }
+ .header {
+    background-color: rgb(218,247,5);
+    color: black;
+    padding: 30px;
+    border-radius: 15px;
+    }
+    body {
+  margin: 40px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 350px 350px;
+  grid-gap: 20px;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: #444;
+  color: #444;
+}
+
+.box {
+  background-color: #fff;
+  color: #444;
+  border-radius: 15px;
+  padding: 30px;
+  font-size: 150%;
+  text-align: center;
+}
+button {
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: white;
+			box-shadow: 2px 2px 0 black;
+			cursor: pointer;
+			margin: 10px 0px;
+			font-family: monospace;
+		}
+		button:hover {
+			box-shadow: 4px 4px 0 black;
+			transform: translate(-2px, -2px);
+		}
+		button:active {
+			box-shadow: 0px 0px 0 black;
+			transform: translate(2px, 2px);
+		}
+
+</style>
+<body>
+
+    <div class="header">
+        <span  style="font-size: 35px"class="test-class-2">Do you want to summon a creature?</span><br>
+
+		<script>
+			var someElements = document.querySelectorAll('.test-class-2');
+
+			function exampleOfARepeatedFunction() 
+            {
+				var randomIndex = Math.floor(Math.random()*someElements.length);
+				var selectedElement = someElements[randomIndex];
+				selectedElement.style.letterSpacing = Math.random()*10 + "px";
+			}
+            setInterval(exampleOfARepeatedFunction, 1700)
+		</script>
+       
+       <button onclick="alert('Go choose one!')">Yes</button>
+       <button onclick="alert('Screw you, you still need to do it.')">No</button>
+    </div>   
+    <br> 
+ <div class="wrapper">
+            <div class="box a">
+                <img src="export 3.png"> 
+                <button onclick="ghost()">Click me for more info</button><br>
+		<span id="monster-id">Ghost</span>
+		<script> 
+			function ghost() {
+				document.querySelector('#monster-id').innerText = "Cute ghost! Recommended for anyone who wants to surprise someone or make a honted house for Halloween!";
+				document.querySelector('#monster-id').style.fontFamily = "monospace";
+                document.querySelector('#monster-id').style.fontSize = "18px";
+			}
+		</script>
+            </div>
+            <div class="box b">
+                <img src="export 3 copy 2.png"> 
+                <button onclick="FrankenDog()">Click me for more info</button><br>
+                <span id="monster-id-1">Franken Dog</span>
+                <script> 
+                    function FrankenDog() {
+                        document.querySelector('#monster-id-1').innerText = "Do you want a pet? But you don't want them to pass away? Hmm, than this is great for you! It can never die, since it's already dead!";
+                        document.querySelector('#monster-id-1').style.fontFamily = "monospace";
+                        document.querySelector('#monster-id-1').style.fontSize = "18px";
+                    }
+                </script>
+            </div>
+            <div class="box c">
+                <img src="export 3 copy.png">
+                <button onclick="BlackCat()">Click me for more info</button><br>
+                <span id="monster-id-2">Black Cat</span>
+                <script> 
+                    function BlackCat() {
+                        document.querySelector('#monster-id-2').innerText = "You want something that's not creepy? Than get a black cat! This cat is a normal looking black cat, except you can link your vision with it!";
+                        document.querySelector('#monster-id-2').style.fontFamily = "monospace";
+                        document.querySelector('#monster-id-2').style.fontSize = "18px";
+                    }
+                </script>
+            </div>
+            <div class="box d">
+                <img src="export 3 copy 3.png">
+                <button onclick="HouseElf()">Click me for more info</button><br>
+                <span id="monster-id-3">House Elf</span>
+                <script> 
+                    function HouseElf() {
+                        document.querySelector('#monster-id-3').innerText = "You want some servant that does all the work for you? Than you should get this elf! How to use them? Go watch Harry Potter.";
+                        document.querySelector('#monster-id-3').style.fontFamily = "monospace";
+                        document.querySelector('#monster-id-3').style.fontSize = "18px";
+                    }
+                </script>
+            </div>
+
+        </div> 
+
+</body>
+</html>
