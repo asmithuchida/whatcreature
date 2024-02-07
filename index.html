@@ -1,165 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>summonsupport</title>
 </head>
 <style>
-     @font-face {
+    @font-face {
         font-family: Workbench;
         src: url(Workbench/static/Workbench-Regular.ttf);
     }
-    span{
+
+    span {
         font-family: Workbench;
     }
-    h1{
+
+    h1 {
         font-family: Workbench;
     }
-    
-     body{
-        background-color: rgb(127,0,255);
+    h2 {
+        font-family: Workbench;
     }
- .header {
-    background-color: rgb(218,247,5);
-    color: black;
-    padding: 30px;
-    border-radius: 15px;
-    }
+
     body {
-  margin: 40px;
-}
-
-.wrapper {
-  display: grid;
-  grid-template-columns: 350px 350px;
-  grid-gap: 20px;
-  padding: 30px;
-  border-radius: 15px;
-  background-color: #444;
-  color: #444;
-}
-
-.box {
-  background-color: #fff;
-  color: #444;
-  border-radius: 15px;
-  padding: 30px;
-  font-size: 150%;
-  text-align: center;
-}
-
-.footer {
-    background-color: rgb(218,247,5);
-    color: black;
-    padding: 30px;
-    border-radius: 15px;
+        background-color: rgb(127, 0, 255);
+        margin: 40px;
     }
-    body {
-  margin: 40px;
-}
-button {
-			border: 2px solid black;
-			padding: 10px 20px;
-			font-size: 18px;
-			background-color: white;
-			box-shadow: 2px 2px 0 black;
-			cursor: pointer;
-			margin: 10px 0px;
-			font-family: monospace;
-		}
-		button:hover {
-			box-shadow: 4px 4px 0 black;
-			transform: translate(-2px, -2px);
-		}
-		button:active {
-			box-shadow: 0px 0px 0 black;
-			transform: translate(2px, 2px);
-		}
 
+    img {
+        display: block;
+    }
+
+    .header {
+        background-color: rgb(218, 247, 5);
+        color: black;                
+        padding: 30px;
+        border-radius: 15px;
+    }
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
+        padding: 30px;
+        border-radius: 15px;
+        background-color: #444;
+        color: #444;
+    }
+    @media only screen and (max-width: 1200px) {
+        .wrapper {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    @media only screen and (max-width: 800px) {
+        .wrapper {
+            grid-template-columns: 1fr;
+        }
+    }
+
+
+    .box {
+        background-color: #fff;
+        color: #444;
+        border-radius: 15px;
+        padding: 30px;
+        font-size: 150%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .box img {
+        max-width: 300px;
+    }
+
+    .static {
+        position: absolute;
+        background: white;
+    }
+
+    .static:hover {
+        opacity: 0;
+    }
+
+    .footer {
+        background-color: rgb(218, 247, 5);
+        color: black;
+        padding: 30px;
+        border-radius: 15px;
+    }
+
+    body {
+        margin: 40px;
+    }
+
+    button {
+        border: 2px solid black;
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: white;
+        box-shadow: 2px 2px 0 black;
+        cursor: pointer;
+        margin: 10px 0px;
+        font-family: monospace;
+    }
+
+    button:hover {
+        box-shadow: 4px 4px 0 black;
+        transform: translate(-2px, -2px);
+    }
+
+    button:active {
+        box-shadow: 0px 0px 0 black;
+        transform: translate(2px, 2px);
+    }
+
+    Ybutton {
+        border: 2px solid black;
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: yellow;
+        box-shadow: 2px 2px 0 black;
+        cursor: pointer;
+        margin: 10px 0px;
+        font-family: monospace;
+        border-radius: 15px;
+    }
+
+    Ybutton:hover {
+        box-shadow: 4px 4px 0 black;
+        transform: translate(-2px, -2px);
+    }
+
+    Ybutton:active {
+        box-shadow: 0px 0px 0 black;
+        transform: translate(2px, 2px);
+    }
+
+    .YellowButton{
+        border: 2px solid black;
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: yellow;
+        box-shadow: 2px 2px 0 black;
+        cursor: pointer;
+        margin: 10px 0px;
+        font-family: monospace;
+        border-radius: 15px;
+    }
+
+    .hide-text {
+        display: none;
+    }
+
+    .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999999999;
+    }
+
+    .close-lightbox {
+        display: none;
+    }
+
+    img.absolute {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 540px;
+        height: 404px;
+        margin-top: -250px;
+        /* Half the height */
+        margin-left: -250px;
+    }
 </style>
+
 <body>
 
     <div class="header">
-        <span  style="font-size: 35px"class="headder-1">Do you want to summon a creature?</span><br>
+        <span style="font-size: 35px" class="headder-1">Do you want to summon a creature?</span><br>
+        <br>
 
-		<script>
-			var someElements = document.querySelectorAll('.headder-1');
+        <button onclick="alert(myFirstArray[0])">Yes</button>
+        <button onclick="alert(myFirstArray[1])">No</button>
+    </div>
+    <br>
 
-			function RepeatedFunction() 
-            {
-				var randomIndex = Math.floor(Math.random()*someElements.length);
-				var selectedElement = someElements[randomIndex];
-				selectedElement.style.letterSpacing = Math.random()*10 + "px";
-			}
-            setInterval(RepeatedFunction, 1700)
-		</script><br>
-       
-		<button onclick="alert(myFirstArray[0])">Yes</button>
-		<button onclick="alert(myFirstArray[1])">No</button>
-		<script>
-			var myFirstArray = ["Go choose one", "Screw you, you still need to do it.",];
-		</script>
-    </div>   
-    <br> 
- <div class="wrapper">
-            <div class="box a">
-                <img src="export 3.png"> 
-                <button onclick="ghost()">Click me for more info</button><br>
-		<span id="monster-id">Ghost</span>
-		<script> 
-			function ghost() {
-				document.querySelector('#monster-id').innerText = "Cute ghost! Recommended for anyone who wants to surprise someone or make a honted house for Halloween!";
-				document.querySelector('#monster-id').style.fontFamily = "monospace";
-                document.querySelector('#monster-id').style.fontSize = "18px";
-			}
-		</script>
-            </div>
-            <div class="box b">
-                <img src="export 3 copy 2.png"> 
-                <button onclick="FrankenDog()">Click me for more info</button><br>
-                <span id="monster-id-1">Franken Dog</span>
-                <script> 
-                    function FrankenDog() {
-                        document.querySelector('#monster-id-1').innerText = "Do you want a pet? But you don't want them to pass away? Hmm, than this is great for you! It can never die, since it's already dead!";
-                        document.querySelector('#monster-id-1').style.fontFamily = "monospace";
-                        document.querySelector('#monster-id-1').style.fontSize = "18px";
-                    }
-                </script>
-            </div>
-            <div class="box c">
-                <img src="export 3 copy.png">
-                <button onclick="BlackCat()">Click me for more info</button><br>
-                <span id="monster-id-2">Black Cat</span>
-                <script> 
-                    function BlackCat() {
-                        document.querySelector('#monster-id-2').innerText = "You want something that's not creepy? Than get a black cat! This cat is a normal looking black cat, except you can link your vision with it!";
-                        document.querySelector('#monster-id-2').style.fontFamily = "monospace";
-                        document.querySelector('#monster-id-2').style.fontSize = "18px";
-                    }
-                </script>
-            </div>
-            <div class="box d">
-                <img src="export 3 copy 3.png">
-                <button onclick="HouseElf()">Click me for more info</button><br>
-                <span id="monster-id-3">House Elf</span>
-                <script> 
-                    function HouseElf() {
-                        document.querySelector('#monster-id-3').innerText = "You want some servant that does all the work for you? Than you should get this elf! How to use them? Go watch Harry Potter.";
-                        document.querySelector('#monster-id-3').style.fontFamily = "monospace";
-                        document.querySelector('#monster-id-3').style.fontSize = "18px";
-                    }
-                </script>
-            </div>
-        </div> <br>
-<div class="footer">
-    <h1>
-        Click the button if you can't choose which one to summon!
-    </h1>
-    <button onclick="alert(myArray[Math.floor(Math.random()*myArray.length)])">Click!</button>
+    <div class="wrapper">
+        <div class="box">
+            <img class="static" src="export3.png">
+            <img class="active" src="Ghost.GIF" width="275" height="auto">
+            <h2 id="monster-id">Ghost</h2>
+            <p class="hide-text" id="monster-text">Cute ghost! Recommended for anyone who wants to surprise someone or
+                make a honted house for Halloween!It is also capable to disapear too!
+                <br><br>
+                <Ybutton onclick="openLightbox('summonghost-ezgif.com-loop-count.gif');yourCustomFunction()">Click to Summon!</Ybutton>
+            </p>
+            <button onclick="ghost()">Click me for more info</button><br>
+        </div>
+        <div class="box">
+            <img class="static" src="export 3 copy 2.png">
+            <img class="active" src="Frankensteindog.GIF" width="275" height="auto">
+            <h2 id="monster-id-1">Franken Dog</h2>
+            <p class="hide-text" id="monster-text2">Do you want a pet? But you don't want them to pass away? Hmm, than
+                this is great for you! It can never die, since it's already dead!
+                <br><br>
+                <Ybutton onclick="openLightbox('summonfrankendog-ezgif.com-loop-count.gif');yourCustomFunction()">Click to Summon!</Ybutton>
+            </p>
+            <button onclick="FrankenDog()">Click me for more info</button><br>
+        </div>
+        <div class="box">
+            <img class="static" src="export 3 copy.png">
+            <img class="active" src="blackcat.GIF" width="275" height="auto">
+            <h2 id="monster-id-2">Black Cat</h2>
+            <p class="hide-text" id="monster-text3">You want something that's not creepy? Than get a black cat! This cat
+                is a normal looking black cat, except you can link your vision with it!
+                <br><br>
+                <Ybutton onclick="openLightbox('summonblack20cat20-ezgif.com-loop-count.gif');yourCustomFunction()">Click to Summon!</Ybutton>
+            </p>
+            <button onclick="BlackCat()">Click me for more info</button><br>
+        </div>
+        <div class="box">
+            <img class="static" src="export 3 copy 3.png">
+            <img class="active" src="houseelf.GIF" width="275" height="auto">
+            <h2 id="monster-id-3">House Elf</h2>
+            <p class="hide-text" id="monster-text4">You want some servant that does all the work for you? Than you
+                should get this elf! How to use them? Go watch Harry Potter.
+                <br> <br>
+                <Ybutton onclick="openLightbox('summon20house20elf20-ezgif.com-loop-count.gif'); yourCustomFunction()">Click to Summon</Ybutton>
+            </p>
+            <button onclick="HouseElf()">Click me for more info</button><br>
+        </div>
+        <div class="box">
+            <img class="static" src="IMG_2214.PNG">
+            <img class="active" src="Bat.GIF" width="275" height="auto">
+            <h2 id="monster-id-4">Bat</h2>
+            <p class="hide-text" id="monster-text5">You want something that is capable in night? Than you should get a bat! It is very good at tracking stuff in night. If you have a person you want to stalk, maybe it's a good choice. 
+                <br> <br>
+                <Ybutton onclick="openLightbox('summon20bad-ezgif.com-loop-count.gif'); yourCustomFunction()">Click to Summon</Ybutton>
+            </p>
+            <button onclick="Bat()">Click me for more info</button><br>
+        </div>
+        <div class="box">
+            <img class="static" src="IMG_2219.PNG">
+            <img class="active" src="devil.GIF" width="275" height="auto">
+            <h2 id="monster-id-5">Devil</h2>
+            <p class="hide-text" id="monster-text6">You want something that can curse someone else? Than you should get a devil! It can curse someone with one spell. 
+                <br> <br>
+                <Ybutton onclick="openLightbox('summon20ghost20Copy-ezgif.com-loop-count.gif'); yourCustomFunction()">Click to Summon</Ybutton>
+            </p>
+            <button onclick="Devil()">Click me for more info</button><br>
+        </div>
+    </div> <br>
+    <div class="footer">
+        <h1>
+            Click the button if you can't choose which one to summon!
+        </h1>
+        <button onclick="alert(myArray[Math.floor(Math.random()*myArray.length)])">Click!</button>
+    </div>
+    <div class="lightbox close-lightbox">
+        <button onclick="closeLightbox()">x</button>
+        <img class="absolute" id="lightbox-image">
+    </div>
+
+
     <script>
-        var myArray = ['Ghost', 'Franken Dog', 'Black Cat','House Elf'];
+
+
+        var someElements = document.querySelectorAll('.headder-1');
+
+        function RepeatedFunction() {
+            var randomIndex = Math.floor(Math.random() * someElements.length);
+            var selectedElement = someElements[randomIndex];
+            selectedElement.style.letterSpacing = Math.random() * 10 + "px";
+        }
+        setInterval(RepeatedFunction, 1700)
+
+        var myFirstArray = ["Go choose one", "Screw you, you still need to do it.",];
+
+
+        function ghost() {
+            document.querySelector('#monster-text').classList.toggle("hide-text");
+            document.querySelector('#monster-text').style.fontFamily = "monospace";
+            document.querySelector('#monster-text').style.fontSize = "18px";
+        }
+
+        function FrankenDog() {
+            document.querySelector('#monster-text2').classList.toggle("hide-text");
+            document.querySelector('#monster-text2').style.fontFamily = "monospace";
+            document.querySelector('#monster-text2').style.fontSize = "18px";
+        }
+
+        function BlackCat() {
+            document.querySelector('#monster-text3').classList.toggle("hide-text");
+            document.querySelector('#monster-text3').style.fontFamily = "monospace";
+            document.querySelector('#monster-text3').style.fontSize = "18px";
+        }
+
+        function HouseElf() {
+            document.querySelector('#monster-text4').classList.toggle("hide-text")
+            document.querySelector('#monster-text4').style.fontFamily = "monospace";
+            document.querySelector('#monster-text4').style.fontSize = "18px";
+        }
+
+        function Bat() {
+            document.querySelector('#monster-text5').classList.toggle("hide-text")
+            document.querySelector('#monster-text5').style.fontFamily = "monospace";
+            document.querySelector('#monster-text5').style.fontSize = "18px";
+        }
+
+        function Devil() {
+            document.querySelector('#monster-text6').classList.toggle("hide-text")
+            document.querySelector('#monster-text6').style.fontFamily = "monospace";
+            document.querySelector('#monster-text6').style.fontSize = "18px";
+        }
+
+
+        var myArray = ['Ghost', 'Franken Dog', 'Black Cat', 'House Elf', 'Bat', 'Devil'];
+
+        var lightbox = document.querySelector('.lightbox');
+        var lightboxImage = document.querySelector('#lightbox-image');
+
+        function openLightbox(yourImageURL) {
+            lightbox.classList.remove('close-lightbox');
+            lightboxImage.src = yourImageURL;
+
+        }
+        function closeLightbox() {
+            lightbox.classList.add('close-lightbox');
+        }
+        function yourCustomFunction() {
+            alert('Are you Ready?');
+        }
     </script>
-</div>
 </body>
+
 </html>
